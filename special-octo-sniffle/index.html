@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizli Mesaj</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Creepster', cursive;
+            text-align: center;
+            padding: 50px;
+            animation: flicker 1.5s infinite, backgroundLight 2s infinite;
+        }
+
+        /* Arka plan ışığı efekti */
+        @keyframes backgroundLight {
+            0% { background-color: black; }
+            50% { background-color: darkred; }
+            100% { background-color: black; }
+        }
+
+        /* Flickering effect for text */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Kan damlaması efekti */
+        @keyframes bloodDrip {
+            0% { top: -100px; }
+            100% { top: 100%; }
+        }
+
+        .blood {
+            position: absolute;
+            left: 50%;
+            width: 5px;
+            height: 20px;
+            background: red;
+            animation: bloodDrip 3s infinite;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px red;
+            border: 2px solid red;
+            position: relative;
+            animation: shake 2s infinite;
+        }
+
+        /* Göz hareketi efekti */
+        @keyframes eyeMove {
+            0% { transform: translateX(5px); }
+            50% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+
+        .hidden-message {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            animation: flicker 2s infinite, eyeMove 1s infinite;
+        }
+
+        .horror-video {
+            margin-top: 20px;
+            width: 100%;
+            height: 315px;
+            border: none;
+            box-shadow: 0 0 30px red;
+            animation: shake 1s infinite;
+        }
+
+        audio {
+            margin-top: 20px;
+            width: 100%;
+            border: 2px solid red;
+            background-color: black;
+            border-radius: 5px;
+            box-shadow: 0 0 15px red;
+            padding: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Ses oynatıcı kontrol düğmeleri için stil */
+        audio::-webkit-media-controls-panel {
+            background-color: black !important;
+            border-radius: 10px;
+            box-shadow: 0 0 15px red !important;
+        }
+
+        audio::-webkit-media-controls-play-button {
+            background-color: red !important;
+            border-radius: 50%;
+            box-shadow: 0 0 10px red;
+        }
+
+        audio::-webkit-media-controls-volume-slider {
+            background-color: red !important;
+        }
+
+        audio::-webkit-media-controls-mute-button {
+            background-color: red !important;
+        }
+
+        /* Ses oynatıcıya hover efekti (titreme) */
+        audio:hover {
+            transform: rotate(5deg);
+        }
+
+        /* Kırmızı damla animasyonu */
+        .blood:nth-child(odd) {
+            left: 20%;
+        }
+
+        .blood:nth-child(even) {
+            left: 80%;
+        }
+
+        /* Korku salan başlık animasyonu */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(5px); }
+            50% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blood"></div>
+    <div class="blood"></div>
+    <div class="container">
+        <p>قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ مِنْ شَرِّ مَا خَلَقَ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ</p>
+        
+        <div class="hidden-message">
+            ".. ş - . - .- .-. -... --.. --- -. ... .--. --- .-."
+        </div>
+        
+        <div class="hidden-message">
+            "1001101 1100101 1110011 1100101 1101110 1100111 1100101 1110010 100000 101011110 1100001 1110000 1101100 1100001 1101011 11100111 100110001 100000 1010000 1100001 1101011 1101001 1111010 1100101 100000 1000111 1110010 1110101 1100010 1110101"
+        </div>
+
+        <audio id="audioPlayer" controls>
+            <source src="assets/0317.mp3" type="audio/mp3">
+            Tarayıcınız ses etiketini desteklemiyor.
+        </audio>
+    </div>
+</body>
+</html>
